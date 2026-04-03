@@ -1,0 +1,13 @@
+import http from 'http';
+const puerto = 1984;
+
+http.createServer((req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+
+    res.end(JSON.stringify({
+        mensaje: "Hola mundo"
+    }));
+})
+.listen(puerto, () => {
+    console.log(`Servidor${puerto}`);
+} );
