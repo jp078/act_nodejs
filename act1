@@ -1,0 +1,8 @@
+// Importamos la función 'format' de la biblioteca 'date-fns' use npm install date-fns para instalarla
+import { format } from 'date-fns';
+
+const hoy = new Date();
+
+const fechaLegible = format(hoy, "eeee, dd 'de' MMMM 'de' yyyy");
+
+console.log(fechaLegible);
