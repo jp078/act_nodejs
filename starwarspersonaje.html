@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars API</title>
+</head>
+<body>
+
+    <h1>Personaje de Star Wars</h1>
+    <div id="resultado">Cargando personaje...</div>
+
+    <script>
+        async function cargarPersonaje() {
+            const contenedor = document.getElementById("resultado");
+
+            try {
+                const res = await fetch('/api/personaje');
+                const data = await res.json();
+
+                const p = data.result.properties;
+
+                contenedor.innerHTML = `
+                    <h2>${p.name}</h2>
+                    <p>Altura: ${p.height}</p>
+                    <p>Peso: ${p.mass}</p>
+                    <p>Género: ${p.gender}</p>
+                    <p>Cabello: ${p.hair_color}</p>
+                    <p>Ojos: ${p.eye_color}</p>
+                `;
+            } catch (error) {
+                contenedor.innerHTML = 'Error al cargar el personaje';
+            }
+        }
+
+        cargarPersonaje();
+    </script>
+
+</body>
+</html>
